@@ -3,10 +3,10 @@
 
 #include "figure.h"
 
-class triangle : public figure
+class tTriangle : public Figure
 {
 public:
-    triangle();
+    tTriangle(const Color& color = Color::white);
     void draw() override;
 };
 

@@ -3,11 +3,13 @@
 
 #include "figure.h"
 
-class quad : public figure
+class tQuad : public Figure
 {
 public:
-    quad();
+    tQuad(const Color& color = Color::white);
     void draw() override;
+protected:
+    GLfloat step;
 };
 
 #endif // QUAD_H

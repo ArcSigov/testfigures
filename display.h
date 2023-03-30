@@ -1,21 +1,23 @@
 #ifndef DISPLAY_H
 #define DISPLAY_H
 
-#include <GL/glut.h>
+
 #include "figure.h"
 #include <vector>
 #include <memory>
+#include "colors.h"
+#include "viewer.h"
 
-class display
+class Display : public Viewer
 {
 public:
-    display(int argc, char **argv);
-    void show();
-    void addfigure(figure*);
+    Display(int argc, char **argv);
+    void show() override;
+    void addFigure(Figure *);
+    void setBackgroundColor(const Color&);
 private:   
-    std::vector<figure*> figures;
+    std::vector<Figure*> figures;
     static void scene();
-    void drawfigures();
 };
 
 #endif // DISPLAY_H

@@ -3,11 +3,11 @@
 
 #include "figure.h"
 
-class circle: public figure
+class tCircle: public Figure
 {
 public:
-    circle();
-    ~circle() = default;
+    tCircle(const Color& color = Color::white);
+    ~tCircle() = default;
     void draw() override;
 };
 
