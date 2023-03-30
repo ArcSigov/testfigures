@@ -1,8 +1,11 @@
 #include "display.h"
 static Display* current;
-Display::Display(int argc, char **argv) : Viewer(argc,argv)
+
+Display::Display(int argc, char **argv, int h, int w, const std::string& title) : View(argc,argv)
 {
-    glutDisplayFunc(Display::scene);
+    createWindow(h,w,title);
+    setDisplayFunc(Display::scene);
+
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(-10.0, 10.0, -10.0, 10.0, -10., 10.);
@@ -18,17 +21,14 @@ Display::Display(int argc, char **argv) : Viewer(argc,argv)
 void Display::scene()
 {
     GLfloat x = -9.f;
-    GLfloat rot = 15.f;
     glClear(GL_COLOR_BUFFER_BIT);
     for (const auto& f: current->figures)
     {
-        glPushMatrix();
         f->setPosition(x,0);
         f->draw();
         x+=4.f;
-        glPopMatrix();
     }
-    glutSwapBuffers();
+    current->nextBuf();
 }
 
 
@@ -39,7 +39,7 @@ void Display::scene()
 void Display::show()
 {
     current = this;
-    glutMainLoop();
+    run();
 }
 
 /*!

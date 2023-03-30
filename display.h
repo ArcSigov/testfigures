@@ -8,10 +8,10 @@
 #include "colors.h"
 #include "viewer.h"
 
-class Display : public Viewer
+class Display : public View
 {
 public:
-    Display(int argc, char **argv);
+    Display(int argc, char **argv,int h =400,int w=400, const std::string& title = "Test");
     void show() override;
     void addFigure(Figure *);
     void setBackgroundColor(const Color&);

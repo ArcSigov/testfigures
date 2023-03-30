@@ -10,7 +10,7 @@
 int main(int argc, char **argv)
 {
 
-    std::unique_ptr<Viewer> view = std::make_unique<Display>(argc,argv);
+    std::unique_ptr<View> view = std::make_unique<Display>(argc,argv,500,500,"TestLesson");
     std::vector<std::unique_ptr<Figure>> figures;
     figures.emplace_back(new tCircle(Color::red));
     figures.emplace_back(new tQuad(Color::green));
